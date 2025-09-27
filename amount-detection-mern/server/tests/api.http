@@ -1,0 +1,28 @@
+// VS Code REST Client: run each with 'Send Request'
+
+### Health
+GET http://localhost:5000/
+
+### Process (text)
+POST http://localhost:5000/api/v1/process
+Content-Type: multipart/form-data
+
+text=Total: INR 1200 | Paid: 1000 | Due: 200
+
+### Extract (text)
+POST http://localhost:5000/api/v1/extract
+Content-Type: multipart/form-data
+
+text=Total: INR 1200 | Paid: 1000 | Due: 200 | Discount: 10%
+
+### Normalize
+POST http://localhost:5000/api/v1/normalize
+Content-Type: application/json
+
+{ "tokens": ["1200","1000","200","10%"] }
+
+### Classify
+POST http://localhost:5000/api/v1/classify
+Content-Type: application/json
+
+{ "text": "Total: INR 1200 | Paid: 1000 | Due: 200", "numbers": [1200,1000,200] }

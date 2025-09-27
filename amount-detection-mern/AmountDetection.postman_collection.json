@@ -1,0 +1,137 @@
+{
+  "info": {
+    "name": "Amount Detection API",
+    "_postman_id": "a1111111-b222-4ccc-8ddd-eeeeffff0001",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Process (text)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "multipart/form-data"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:5000/api/v1/process",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "api",
+            "v1",
+            "process"
+          ]
+        },
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "text",
+              "value": "Total: INR 1200 | Paid: 1000 | Due: 200",
+              "type": "text"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Extract (text)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "multipart/form-data"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:5000/api/v1/extract",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "api",
+            "v1",
+            "extract"
+          ]
+        },
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "text",
+              "value": "Total: INR 1200 | Paid: 1000 | Due: 200 | Discount: 10%",
+              "type": "text"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Normalize",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:5000/api/v1/normalize",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "api",
+            "v1",
+            "normalize"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\"tokens\": [\"1200\", \"1000\", \"200\", \"10%\"]}"
+        }
+      }
+    },
+    {
+      "name": "Classify",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:5000/api/v1/classify",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "api",
+            "v1",
+            "classify"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\"text\": \"Total: INR 1200 | Paid: 1000 | Due: 200\", \"numbers\": [1200, 1000, 200]}"
+        }
+      }
+    }
+  ]
+}
